@@ -4,6 +4,8 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { LoginFormData } from "@/pages/login/model";
+import { Input } from "@/shared/ui";
+import { Button } from "@/shared/ui";
 
 // {
 // username: "jhonsdjhnond",
@@ -14,7 +16,7 @@ import { LoginFormData } from "@/pages/login/model";
 
 
 export const LoginPage: FC = () => {
-    const { register, handleSubmit } = useForm<LoginFormData>();
+    const { handleSubmit } = useForm<LoginFormData>();
     const { setToken } = useAuth();
     const navigate = useNavigate();
 
@@ -32,22 +34,24 @@ export const LoginPage: FC = () => {
 
     return (
         <form onSubmit={handleSubmit(onSumbit)}>
-            <input
-                {...register("username", {
+            <Input
+                name='username'
+                placeholder='Имя пользователя'
+                rules={{
                     minLength: 5,
                     maxLength: 50,
-                })}
-                placeholder='Имя пользователя'
+                }}
             />
-            <input
-                {...register("password", {
-                    minLength: 0,
-                    maxLength: 255,
-                })}
+            <Input
+                name='password'
                 type='password'
                 placeholder='Пароль'
+                rules={{
+                    minLength: 0,
+                    maxLength: 255,
+                }}
             />
-            <button type='submit'>Войти</button>
+            <Button name='Войти' type='submit' />
         </form>
     );
 };
