@@ -14,3 +14,6 @@ npm run lint --fix  - eslint исправление несоответствий
 # О проекте
 1. Сборщик vite
 2. [Feature-Sliced Design](https://feature-sliced.design/ru/docs)
+
+# Api Docs
+http://45.151.31.101:8080/swagger-ui/index.html#/
