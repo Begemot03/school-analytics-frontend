@@ -1,20 +1,27 @@
 import { authApi } from "@/shared/api/api";
 import { useAuth } from "@/shared/lib/auth/useAuth";
 import { FC } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { LoginFormData } from "@/pages/login/model";
+
+// {
+// username: "jhonsdjhnond",
+// email: "testmdasdil@mail.ru",
+// password: "233ddsda24",
+// }
+
+
 
 export const LoginPage: FC = () => {
+    const { register, handleSubmit } = useForm<LoginFormData>();
     const { setToken } = useAuth();
     const navigate = useNavigate();
 
-    const handleLogin = async () => {
+    const onSumbit = async (data: object) => {
         const response: string = await authApi
             .post("sign-in", {
-                body: JSON.stringify({
-                    username: "jhonsdjhnond",
-                    email: "testmdasdil@mail.ru",
-                    password: "233ddsda24",
-                }),
+                body: JSON.stringify(data),
             })
             .json();
 
@@ -24,10 +31,23 @@ export const LoginPage: FC = () => {
     };
 
     return (
-        <div>
-            <input type='text' placeholder='Логин' />
-            <input type='text' placeholder='Пароль' />
-            <button onClick={handleLogin}>Войти</button>
-        </div>
+        <form onSubmit={handleSubmit(onSumbit)}>
+            <input
+                {...register("username", {
+                    minLength: 5,
+                    maxLength: 50,
+                })}
+                placeholder='Имя пользователя'
+            />
+            <input
+                {...register("password", {
+                    minLength: 0,
+                    maxLength: 255,
+                })}
+                type='password'
+                placeholder='Пароль'
+            />
+            <button type='submit'>Войти</button>
+        </form>
     );
 };
