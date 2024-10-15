@@ -3,11 +3,11 @@ import { FC } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 export const NotAuthRoute: FC = () => {
-    const { token } = useAuth();
+    const { isAuth } = useAuth();
 
-    if (token) {
-        return <Navigate to="/" replace />;
+    if (isAuth) {
+        return <Navigate to='/' replace />;
     }
 
     return <Outlet />;
-}
+};

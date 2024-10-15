@@ -1,9 +1,27 @@
 :root {
 	--white: #fff;
 	--black: #000;
+	--footer-bg: #ccc;
+	--header-bg: #ccc;
+	--hover-link: #fff;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 #root {
 	height: 100%;
 	background-color: var(--white);
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }

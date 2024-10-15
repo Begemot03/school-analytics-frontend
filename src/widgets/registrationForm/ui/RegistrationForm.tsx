@@ -1,4 +1,3 @@
-import { authApi } from "@/shared/api/api";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Form } from "@/shared/ui/form";
@@ -15,25 +14,18 @@ const schema = yup.object({
 });
 
 export const RegistrationForm: FC = () => {
-    const { setToken } = useAuth();
+    const { signup } = useAuth();
     const navigate = useNavigate();
     const resolver = yupResolver(schema);
 
     const onSumbit = async (data: object) => {
-        const response: string = await authApi
-            .post("sign-up", {
-                body: JSON.stringify(data),
-            })
-            .json();
-
-        //@ts-ignore
-        setToken(response.token);
+        await signup(data);
         navigate("/", { replace: true });
     };
 
     return (
-        <Form defaultValues={ { resolver }} onSubmit={onSumbit}>
-            <Input name='username' placeholder='Има пользователя' />
+        <Form defaultValues={{ resolver }} onSubmit={onSumbit}>
+            <Input name='username' placeholder='Имя пользователя' />
             <Input name='email' placeholder='Email' />
             <Input name='password' type='password' placeholder='Пароль' />
             <Button type='submit'>Войти</Button>

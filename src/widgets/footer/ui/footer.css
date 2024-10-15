@@ -1,0 +1,10 @@
+.footer {
+    width: 100%;
+    min-height: 10rem;
+    background-color: var(--footer-bg);
+    padding: 2rem;
+}
+
+.footer__container {
+    box-shadow: 1px 1px 1px 1px #000;
+}

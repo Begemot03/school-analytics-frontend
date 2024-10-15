@@ -1,4 +1,3 @@
-import { authApi } from "@/shared/api/api";
 import { useAuth } from "@/shared/lib/auth/useAuth";
 import { Button } from "@/shared/ui/button";
 import { Form } from "@/shared/ui/form";
@@ -14,19 +13,12 @@ const schema = yup.object({
 });
 
 export const LoginForm: FC = () => {
-    const { setToken } = useAuth();
+    const { signin } = useAuth();
     const navigate = useNavigate();
     const resolver = yupResolver(schema);
 
     const onSumbit = async (data: object) => {
-        const response: string = await authApi
-            .post("sign-in", {
-                body: JSON.stringify(data),
-            })
-            .json();
-
-        //@ts-ignore
-        setToken(response.token);
+        await signin(data);
         navigate("/", { replace: true });
     };
 
