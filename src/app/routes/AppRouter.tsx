@@ -1,49 +1,57 @@
-import { ProtectedRoute } from "@/app/routes/ProtectedRoute";
+import { Layout } from "@/app/layout/Layout";
+import { Logout } from "@/app/routes/logoutRoute";
+import { NotAuthRoute } from "@/app/routes/notAuthRoute/NotAuthRoute";
+import { ProtectedRoute } from "@/app/routes/protectedRoute";
 import { HomePage } from "@/pages/home";
 import { LoginPage } from "@/pages/login";
 import { RegistrationPage } from "@/pages/registration";
-import { useAuth } from "@/shared/lib/auth/useAuth";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 
-const routesForPublic = [
-    {
-        path: "/about",
-        element: <div>About</div>,
-    },
-];
-
-const routesForAuthenticatedOnly = [
+const router = createBrowserRouter([
     {
         path: "/",
-        element: <ProtectedRoute />,
+        element: <Layout />,
         children: [
             {
                 path: "/",
-                element: <HomePage />,
+                element: <ProtectedRoute />, 
+                children: [
+                    {
+                        path: "/",
+                        element: <HomePage />, 
+                    },
+                ],
             },
+            {
+                path: "/",
+                element: <NotAuthRoute />,
+                children: [
+                    {
+                        path: "login",
+                        element: <LoginPage />,
+                    },
+                    {
+                        path: "registration",
+                        element: <RegistrationPage />, 
+                    },
+                ],
+            },
+            {
+                path: "about",
+                element: <div>About</div>,
+            },
+            {
+                path: "*",
+                element: <Navigate to="/" replace />
+            }
         ],
     },
-];
-
-const routesForNotAuthenticatedOnly = [
     {
-        path: "/login",
-        element: <LoginPage />,
+        path: "logout",
+        element: <Logout />, // Changed from Component to element
     },
-    {
-        path: "/registration",
-        element: <RegistrationPage />,
-    },
-];
+]);
 
 export const AppRouter = () => {
-    const { token } = useAuth();
-
-    const router = createBrowserRouter([
-        ...routesForPublic,
-        ...(!token ? routesForNotAuthenticatedOnly : []),
-        ...routesForAuthenticatedOnly,
-    ]);
-
     return <RouterProvider router={router} />;
 };

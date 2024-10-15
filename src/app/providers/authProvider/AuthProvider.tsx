@@ -1,5 +1,4 @@
 import { authApi } from "@/shared/api/api";
-import ky from "ky";
 import {
     createContext,
     FC,
@@ -15,9 +14,10 @@ type props = {
 
 export const AuthContext = createContext<{
     token: string | null;
-    setToken?: React.Dispatch<React.SetStateAction<string | null>>;
+    setToken: React.Dispatch<React.SetStateAction<string | null>>;
 }>({
     token: null,
+    setToken: () => {}
 });
 
 export const AuthProvider: FC<props> = ({ children }: props) => {
@@ -26,7 +26,6 @@ export const AuthProvider: FC<props> = ({ children }: props) => {
     );
 
     useEffect(() => {
-        console.log(token);
         if (token) {
             authApi.extend({
                 headers: {
