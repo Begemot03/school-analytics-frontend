@@ -1,0 +1,23 @@
+.header {
+    width: 100%;
+    min-height: 5rem;
+    padding: 2rem;
+    background-color: var(--header-bg);
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.nav__item:hover {
+    color: var(--hover-link);
+}

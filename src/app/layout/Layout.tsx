@@ -2,6 +2,7 @@ import { Footer } from "@/widgets/footer/ui/Footer";
 import { Header } from "@/widgets/header";
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
+import "./layout.css";
 
 export const Layout: FC = () => {
     return (

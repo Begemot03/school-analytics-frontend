@@ -4,7 +4,7 @@ import { useForm, UseFormProps } from "react-hook-form";
 type FormProps = {
     defaultValues?: UseFormProps<any, unknown>;
     children: ReactElement | ReactElement[];
-    onSubmit: (...args: any) => any;
+    onSubmit: () => {};
 };
 
 export const Form: FC<FormProps> = ({ defaultValues, children, onSubmit }) => {

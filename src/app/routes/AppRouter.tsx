@@ -5,7 +5,11 @@ import { ProtectedRoute } from "@/app/routes/protectedRoute";
 import { HomePage } from "@/pages/home";
 import { LoginPage } from "@/pages/login";
 import { RegistrationPage } from "@/pages/registration";
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import {
+    createBrowserRouter,
+    Navigate,
+    RouterProvider,
+} from "react-router-dom";
 
 const router = createBrowserRouter([
     {
@@ -14,11 +18,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <ProtectedRoute />, 
+                element: <ProtectedRoute />,
                 children: [
                     {
                         path: "/",
-                        element: <HomePage />, 
+                        element: <HomePage />,
                     },
                 ],
             },
@@ -32,7 +36,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "registration",
-                        element: <RegistrationPage />, 
+                        element: <RegistrationPage />,
                     },
                 ],
             },
@@ -42,13 +46,13 @@ const router = createBrowserRouter([
             },
             {
                 path: "*",
-                element: <Navigate to="/" replace />
-            }
+                element: <Navigate to='/' replace />,
+            },
         ],
     },
     {
         path: "logout",
-        element: <Logout />, // Changed from Component to element
+        element: <Logout />,
     },
 ]);
 
