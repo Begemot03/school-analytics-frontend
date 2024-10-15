@@ -1,11 +1,11 @@
 import { AuthProvider } from "@/app/providers/authProvider";
-import "./styles/global.css";
 import { AppRouter } from "@/app/routes";
+import "./styles/global.css";
 
 function App() {
     return (
         <AuthProvider>
-            <AppRouter />
+             <AppRouter />
         </AuthProvider>
     );
 }
