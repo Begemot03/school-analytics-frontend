@@ -1,3 +1,8 @@
 .layout__content {
     padding: 10rem;
 }
+
+.layout__wrapper {
+    position: relative;
+    min-height: 100%;
+}

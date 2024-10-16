@@ -23,9 +23,9 @@ export const AuthContext = createContext<{
     signup: (data: any) => Promise<void>;
 }>({
     isAuth: false,
-    signin: async () => {},
-    signout: async () => {},
-    signup: async () => {},
+    signin: async () => { },
+    signout: async () => { },
+    signup: async () => { },
 });
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
