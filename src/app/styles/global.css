@@ -4,12 +4,19 @@
 	--footer-bg: #ccc;
 	--header-bg: #ccc;
 	--hover-link: #fff;
+	--button-color: #ccc;
+	--input-border-color: #ccc;
 }
 
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	font-family: sans-serif;
 }
 
 #root {

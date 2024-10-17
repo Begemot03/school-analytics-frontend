@@ -3,6 +3,7 @@ import { Header } from "@/widgets/header";
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import "./layout.css";
+import { Container } from "@/shared/ui/container";
 
 export const Layout: FC = () => {
     return (
@@ -10,7 +11,9 @@ export const Layout: FC = () => {
             <Header />
 
             <main className='layout__content'>
-                <Outlet />
+                <Container>
+                    <Outlet />
+                </Container>
             </main>
 
             <Footer />
