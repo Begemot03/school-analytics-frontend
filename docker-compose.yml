@@ -5,8 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: begemot03/react-app:latest
     ports:
-      - "8083:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - "80:80"
     restart: always
