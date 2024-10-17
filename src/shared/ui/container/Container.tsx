@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import "./container.css";
 
 type props = {
     children: ReactNode;
