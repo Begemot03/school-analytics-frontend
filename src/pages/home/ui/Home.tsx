@@ -5,6 +5,7 @@ import { useAuthStore } from "@/app/stores/authStore";
 import { useShallow } from "zustand/shallow";
 
 export const HomePage: FC = () => {
+    const setRole = useAuthStore((state) => state.setRole);
     const [loading, setLoading] = useState<boolean>(false);
     const [userRole, userEmail] = useAuthStore(
         useShallow((state) => [state.userRole, state.userEmail])
@@ -14,6 +15,7 @@ export const HomePage: FC = () => {
         try {
             setLoading(true);
             await api.get("example/get-admin");
+            setRole("ROLE_ADMIN");
         } catch (error) {
             console.error("Error fetch");
         } finally {

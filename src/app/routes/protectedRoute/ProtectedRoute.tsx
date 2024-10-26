@@ -1,10 +1,10 @@
-import { useAuthStore } from "@/app/stores/authStore";
+import { Role, useAuthStore } from "@/app/stores/authStore";
 import { FC } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 
 type ProtectedRouteProps = {
-    allowRoles?: string[];
+    allowRoles?: Array<Role | "*">;
 };
 
 export const ProtectedRoute: FC<ProtectedRouteProps> = ({ allowRoles }) => {
@@ -12,13 +12,13 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ allowRoles }) => {
         useShallow((state) => [state.isAuth, state.userRole])
     );
 
-    if (!isAuth) {
-        return <Navigate to='/login' replace />;
+    if (isAuth && allowRoles?.at(0) === "*") {
+        return <Outlet />;
     }
 
     if (userRole && allowRoles?.includes(userRole)) {
         return <Outlet />;
     }
 
-    return <Navigate to='/login' replace />;
+    return <Navigate to='/' replace />;
 };

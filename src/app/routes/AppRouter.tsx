@@ -5,6 +5,7 @@ import { AdminPage } from "@/pages/admin";
 import { HomePage } from "@/pages/home";
 import { LoginPage } from "@/pages/login";
 import { RegistrationPage } from "@/pages/registration";
+import { StudentPage } from "@/pages/student/ui/StudentPage";
 import { TeacherPage } from "@/pages/teacher";
 import {
     createBrowserRouter,
@@ -19,19 +20,41 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: (
-                    <ProtectedRoute
-                        allowRoles={[
-                            "ROLE_STUDENT",
-                            "ROLE_TEACHER",
-                            "ROLE_ADMIN",
-                        ]}
-                    />
-                ),
+                element: <ProtectedRoute allowRoles={["*"]} />,
                 children: [
                     {
                         path: "/",
                         element: <HomePage />,
+                    },
+                ],
+            },
+            {
+                path: "/",
+                element: <ProtectedRoute allowRoles={["ROLE_ADMIN"]} />,
+                children: [
+                    {
+                        path: "admin",
+                        element: <AdminPage />,
+                    },
+                ],
+            },
+            {
+                path: "/",
+                element: <ProtectedRoute allowRoles={["ROLE_TEACHER"]} />,
+                children: [
+                    {
+                        path: "teacher",
+                        element: <TeacherPage />,
+                    },
+                ],
+            },
+            {
+                path: "/",
+                element: <ProtectedRoute allowRoles={["ROLE_STUDENT"]} />,
+                children: [
+                    {
+                        path: "student",
+                        element: <StudentPage />,
                     },
                 ],
             },
@@ -52,14 +75,6 @@ const router = createBrowserRouter([
     {
         path: "registration",
         element: <RegistrationPage />,
-    },
-    {
-        path: "admin",
-        element: <AdminPage />,
-    },
-    {
-        path: "teacher",
-        element: <TeacherPage />,
     },
     {
         path: "logout",
