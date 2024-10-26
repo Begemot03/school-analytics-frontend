@@ -1,0 +1,49 @@
+.student__list-item {
+    position: relative;
+    background-color: var(--form-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 20px 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: 60px;
+    border-radius: 10px;
+}
+
+.student__list-tools {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
+.student__list-button {
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.modal {
+    position: absolute;
+    right: -20%;
+    background-color: var(--form-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 80px;
+    min-width: 145px;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.modal-button {
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.modal-select {
+    margin: 10px;
+    min-width: 80%;
+}
