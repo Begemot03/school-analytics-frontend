@@ -25,10 +25,10 @@ export const RegistrationForm: FC = () => {
 
     return (
         <Form defaultValues={{ resolver }} onSubmit={onSumbit}>
-            <Input name='username' placeholder='Имя пользователя' />
-            <Input name='email' placeholder='Email' />
+            <Input name='username' placeholder='Имя' />
+            <Input name='email' placeholder='Электронная почта' />
             <Input name='password' type='password' placeholder='Пароль' />
-            <Button type='submit'>Войти</Button>
+            <Button className="button registration__button" type='submit'>Продолжить</Button>
         </Form>
     );
 };

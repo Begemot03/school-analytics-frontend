@@ -26,7 +26,7 @@ export const LoginForm: FC = () => {
         <Form defaultValues={{ resolver }} onSubmit={onSumbit}>
             <Input name='username' placeholder='Имя пользователя' />
             <Input name='password' type='password' placeholder='Пароль' />
-            <Button type='submit'>Войти</Button>
+            <Button className="button login__button" type='submit'>Войти</Button>
         </Form>
     );
 };

@@ -27,26 +27,26 @@ const router = createBrowserRouter([
                 ],
             },
             {
-                path: "/",
-                element: <NotAuthRoute />,
-                children: [
-                    {
-                        path: "login",
-                        element: <LoginPage />,
-                    },
-                    {
-                        path: "registration",
-                        element: <RegistrationPage />,
-                    },
-                ],
-            },
-            {
                 path: "about",
                 element: <div>About</div>,
             },
             {
                 path: "*",
                 element: <Navigate to='/' replace />,
+            },
+        ],
+    },
+    {
+        path: "/",
+        element: <NotAuthRoute />,
+        children: [
+            {
+                path: "login",
+                element: <LoginPage />,
+            },
+            {
+                path: "registration",
+                element: <RegistrationPage />,
             },
         ],
     },
