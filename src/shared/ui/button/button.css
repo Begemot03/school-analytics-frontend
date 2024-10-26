@@ -1,4 +1,9 @@
+.button__wrapper {
+    position: relative;
+}
+
 .button {
+    position: relative;
     background-color: var(--button-color);
     padding: 10px 30px;
     border: none;
@@ -7,5 +12,9 @@
 
 .button:hover {
     cursor: pointer;
+    opacity: 0.5;
+}
+
+.button:has(+.loader) {
     opacity: 0.5;
 }
