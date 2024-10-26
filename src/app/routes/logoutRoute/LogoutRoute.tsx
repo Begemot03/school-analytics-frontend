@@ -1,9 +1,9 @@
-import { useAuth } from "@/shared/lib/auth/useAuth";
+import { useAuthStore } from "@/app/stores/authStore";
 import { FC, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 export const Logout: FC = () => {
-    const { signout } = useAuth();
+    const signout = useAuthStore((state) => state.signout);
 
     useEffect(() => {
         const logout = async () => {

@@ -1,5 +1,6 @@
 .button__wrapper {
     position: relative;
+    width: fit-content;
 }
 
 .button {

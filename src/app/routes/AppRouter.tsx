@@ -1,6 +1,5 @@
 import { Layout } from "@/app/layout/Layout";
 import { Logout } from "@/app/routes/logoutRoute";
-import { NotAuthRoute } from "@/app/routes/notAuthRoute/NotAuthRoute";
 import { ProtectedRoute } from "@/app/routes/protectedRoute";
 import { HomePage } from "@/pages/home";
 import { LoginPage } from "@/pages/login";
@@ -18,7 +17,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <ProtectedRoute />,
+                element: (
+                    <ProtectedRoute
+                        allowRoles={[
+                            "ROLE_STUDENT",
+                            "ROLE_TEACHER",
+                            "ROLE_ADMIN",
+                        ]}
+                    />
+                ),
                 children: [
                     {
                         path: "/",
@@ -37,18 +44,12 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "/",
-        element: <NotAuthRoute />,
-        children: [
-            {
-                path: "login",
-                element: <LoginPage />,
-            },
-            {
-                path: "registration",
-                element: <RegistrationPage />,
-            },
-        ],
+        path: "login",
+        element: <LoginPage />,
+    },
+    {
+        path: "registration",
+        element: <RegistrationPage />,
     },
     {
         path: "logout",

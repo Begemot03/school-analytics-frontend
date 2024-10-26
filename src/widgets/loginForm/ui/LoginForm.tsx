@@ -1,4 +1,4 @@
-import { useAuth } from "@/shared/lib/auth/useAuth";
+import { useAuthStore } from "@/app/stores/authStore";
 import { email, password } from "@/shared/lib/validationEntities";
 import { Button } from "@/shared/ui/button";
 import { Form } from "@/shared/ui/form";
@@ -14,10 +14,10 @@ const schema = yup.object({
 });
 
 export const LoginForm: FC = () => {
-    const { signin } = useAuth();
+    const signin = useAuthStore((state) => state.signin);
     const navigate = useNavigate();
     const resolver = yupResolver(schema);
-    const [ loading, setLoading ] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const onSumbit = async (data: any) => {
         setLoading(true);

@@ -20,3 +20,7 @@ export const api = ky.create({
 export const authApi = api.extend((options) => ({
     prefixUrl: `${options.prefixUrl}/auth`,
 }));
+
+export const adminApi = api.extend((options) => ({
+    prefixUrl: `${options.prefixUrl}/admin`,
+}));

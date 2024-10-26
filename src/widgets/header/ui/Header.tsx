@@ -1,12 +1,12 @@
 import { FC } from "react";
-import "./header.css";
-import { useAuth } from "@/shared/lib/auth/useAuth";
 import { ROUTES } from "@/shared/consts";
 import { NavLink } from "react-router-dom";
 import { Container } from "@/shared/ui/container";
+import { useAuthStore } from "@/app/stores/authStore";
+import "./header.css";
 
 export const Header: FC = () => {
-    const { isAuth } = useAuth();
+    const isAuth = useAuthStore((state) => state.isAuth);
 
     const navigationContent = ROUTES.filter((route) =>
         route.isAuth ? isAuth : true
