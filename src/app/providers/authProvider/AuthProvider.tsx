@@ -1,12 +1,5 @@
-import { api, authApi } from "@/shared/api/api";
-import {
-    createContext,
-    FC,
-    ReactNode,
-    useEffect,
-    useMemo,
-    useState,
-} from "react";
+import { authApi } from "@/shared/api/api";
+import { createContext, FC, ReactNode, useMemo, useState } from "react";
 
 type AuthProviderProps = {
     children: ReactNode;
@@ -23,19 +16,24 @@ export const AuthContext = createContext<{
     signup: (data: any) => Promise<void>;
 }>({
     isAuth: false,
-    signin: async () => { },
-    signout: async () => { },
-    signup: async () => { },
+    signin: async () => {},
+    signout: async () => {},
+    signup: async () => {},
 });
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
-    const [token, setToken] = useState<string | null>(
-        localStorage.getItem("token")
+    const [isAuth, setIsAuth] = useState<boolean>(
+        localStorage.getItem("token") != null
     );
-    const [isAuth, setIsAuth] = useState(false);
 
     const sign = (_token: string): void => {
-        setToken(_token);
+        if (_token) {
+            setIsAuth(true);
+            localStorage.setItem("token", _token);
+        } else {
+            setIsAuth(false);
+            localStorage.removeItem("token");
+        }
     };
 
     const signin = async (data: any) => {
@@ -53,7 +51,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     };
 
     const signout = async () => {
-        setToken(null);
+        setIsAuth(false);
+        localStorage.removeItem("token");
     };
 
     const signup = async (data: any) => {
@@ -70,26 +69,6 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         }
     };
 
-    useEffect(() => {
-        if (token) {
-            api.extend({
-                headers: {
-                    Authorization: "Brearer" + token,
-                },
-            });
-            setIsAuth(true);
-            localStorage.setItem("token", token);
-        } else {
-            api.extend({
-                headers: {
-                    Authorization: "",
-                },
-            });
-            setIsAuth(false);
-            localStorage.removeItem("token");
-        }
-    }, [token]);
-
     const contextValue = useMemo(
         () => ({
             isAuth,
@@ -97,7 +76,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             signout,
             signup,
         }),
-        [token, isAuth]
+        [isAuth]
     );
 
     return (
