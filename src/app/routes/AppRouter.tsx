@@ -2,9 +2,11 @@ import { Layout } from "@/app/layout/Layout";
 import { Logout } from "@/app/routes/logoutRoute";
 import { NotAuthRoute } from "@/app/routes/notAuthRoute/NotAuthRoute";
 import { ProtectedRoute } from "@/app/routes/protectedRoute";
+import { AdminPage } from "@/pages/admin";
 import { HomePage } from "@/pages/home";
 import { LoginPage } from "@/pages/login";
 import { RegistrationPage } from "@/pages/registration";
+import { TeacherPage } from "@/pages/teacher";
 import {
     createBrowserRouter,
     Navigate,
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
                 element: <RegistrationPage />,
             },
         ],
+    },
+    {
+        path: "admin",
+        element: <AdminPage />,
+    },
+    {
+        path: "teacher",
+        element: <TeacherPage />,
     },
     {
         path: "logout",

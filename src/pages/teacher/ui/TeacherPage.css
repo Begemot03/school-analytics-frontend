@@ -1,0 +1,9 @@
+.teacher__heading {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.teacher__container {
+    margin: 0 auto;
+    width: 50%;
+}
