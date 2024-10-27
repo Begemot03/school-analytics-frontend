@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
-    "@types/chart.js": "^2.9.41",
-    "chart.js": "^4.4.5",
     "jwt-decode": "^4.0.0",
     "ky": "^1.7.2",
     "path": "^0.12.7",

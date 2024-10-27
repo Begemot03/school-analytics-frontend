@@ -23,12 +23,5 @@
 }
 
 .nav__item:hover {
-    opacity: 0.5;
-    cursor: pointer;
-}
-
-.nav_item--selected {
-    background-color: #5c705c;
-    padding: 6px;
-    border-radius: 6px;
+    color: var(--hover-link);
 }
