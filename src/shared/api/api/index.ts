@@ -24,3 +24,11 @@ export const authApi = api.extend((options) => ({
 export const adminApi = api.extend((options) => ({
     prefixUrl: `${options.prefixUrl}/admin`,
 }));
+
+export const studentApi = api.extend((options) => ({
+    prefixUrl: `${options.prefixUrl}/student`,
+}));
+
+export const teacherApi = api.extend((options) => ({
+    prefixUrl: `${options.prefixUrl}/teacher`,
+}));

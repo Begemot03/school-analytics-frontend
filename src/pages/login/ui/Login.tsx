@@ -1,13 +1,7 @@
 import { FC } from "react";
 import { LoginForm } from "@/widgets/loginForm";
-import "./Login.css";
 import { Link } from "react-router-dom";
-
-// {
-// username: "jhonsdjhnond",
-// email: "testmdasdil@mail.ru",
-// password: "233ddsda24",
-// }
+import "./Login.css";
 
 export const LoginPage: FC = () => {
     return (

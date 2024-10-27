@@ -21,7 +21,6 @@ export const LoginForm: FC = () => {
 
     const onSumbit = async (data: any) => {
         setLoading(true);
-        data.username = data.email;
         await signin(data);
         setLoading(false);
         navigate("/", { replace: true });
@@ -29,6 +28,7 @@ export const LoginForm: FC = () => {
 
     return (
         <Form defaultValues={{ resolver }} onSubmit={onSumbit}>
+            <Input name='username' placeholder='Логин' />
             <Input name='email' placeholder='Электронная почта' />
             <Input name='password' type='password' placeholder='Пароль' />
             <Button

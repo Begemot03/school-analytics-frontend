@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Form } from "@/shared/ui/form";
@@ -16,9 +16,11 @@ const schema = yup.object({
 
 export const AdminForm: FC = () => {
     const resolver = yupResolver(schema);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const onSumbit = async (data: any) => {
         try {
+            setLoading(true);
             data.username = data.email;
             await adminApi
                 .post("new-teacher", {
@@ -27,6 +29,8 @@ export const AdminForm: FC = () => {
                 .json();
         } catch (error) {
             console.error("Error:", error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -35,7 +39,10 @@ export const AdminForm: FC = () => {
             <Input name='fio' placeholder='ФИО преподавателя' />
             <Input name='email' placeholder='Электронная почта' />
             <Input name='password' type='password' placeholder='Пароль' />
-            <Button className='button admin__button' type='submit'>
+            <Button
+                loading={loading}
+                className='button admin__button'
+                type='submit'>
                 Добавить
             </Button>
         </Form>
