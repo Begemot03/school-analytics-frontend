@@ -1,8 +1,9 @@
 :root {
 	--white: #fff;
 	--black: #000;
-	--footer-bg: #ccc;
-	--header-bg: #ccc;
+	--body-bg: #F3FFFA;
+	--footer-bg: #84C7AE;
+	--header-bg: #84C7AE;
 	--hover-link: #fff;
 	--button-color: #84C7AE;
 	--button-text-color: #fff;
@@ -10,6 +11,7 @@
 	--form-bg: #F6FBF9;
 	--heading-text-color: #212B27;
 	--placeholder-color: #000;
+	--nav-link-color: #fff;
 }
 
 * {
@@ -23,6 +25,8 @@ body {
 	font-family: "Overpass", sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
+	background-color: var(--body-bg);
+	background-image: none;
 }
 
 #root {

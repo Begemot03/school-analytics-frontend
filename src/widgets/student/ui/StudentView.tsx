@@ -3,13 +3,6 @@ import { Button } from "@/shared/ui/button";
 import { api } from "@/shared/api/api";
 import "./StudentView.css";
 
-// {
-//     "value": 4,
-//     "dateTime": "2024-10-26T15:50:16.641Z",
-//     "student_id": 9,
-//     "subject_name": "Физика"
-// }
-
 type StudentProps = {
     fio: string;
     id: number;
@@ -67,7 +60,7 @@ export const StudentView: FC<StudentProps> = ({ fio, id }) => {
         }
 
         try {
-            await api.post("grade", {
+            await api.post("attendance", {
                 body: JSON.stringify(sendData),
             })
                 .json();
@@ -80,7 +73,7 @@ export const StudentView: FC<StudentProps> = ({ fio, id }) => {
     }
 
     return <div className="student__list-item">
-        <p>{id} {fio}</p>
+        <p>{fio}</p>
         <div className="student__list-tools">
             <Button onClick={handleAddGrade} className="button student__list-button" type="button">Добавить оценку</Button>
             <Button onClick={handleMarkAttendance} className="button student__list-button" type="button">Отметить посещение</Button>

@@ -25,6 +25,9 @@ export const Header: FC = () => {
             <Container>
                 <div className='header__container'>
                     <nav className='nav'>
+                        <li className='nav__item'>
+                            <NavLink to='/'>EduStep</NavLink>
+                        </li>
                         {routes.map((route) => (
                             <span className='nav__item' key={route.label}>
                                 <NavLink to={route.to}>{route.label}</NavLink>

@@ -1,6 +1,7 @@
 import { Layout } from "@/app/layout/Layout";
 import { Logout } from "@/app/routes/logoutRoute";
 import { ProtectedRoute } from "@/app/routes/protectedRoute";
+import { AboutPage } from "@/pages/about";
 import { AdminPage } from "@/pages/admin";
 import { HomePage } from "@/pages/home";
 import { LoginPage } from "@/pages/login";
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "about",
-                element: <div>About</div>,
+                element: <AboutPage />,
             },
             {
                 path: "*",
