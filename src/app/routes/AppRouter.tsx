@@ -1,10 +1,13 @@
 import { Layout } from "@/app/layout/Layout";
 import { Logout } from "@/app/routes/logoutRoute";
-import { NotAuthRoute } from "@/app/routes/notAuthRoute/NotAuthRoute";
 import { ProtectedRoute } from "@/app/routes/protectedRoute";
+import { AboutPage } from "@/pages/about";
+import { AdminPage } from "@/pages/admin";
 import { HomePage } from "@/pages/home";
 import { LoginPage } from "@/pages/login";
 import { RegistrationPage } from "@/pages/registration";
+import { StudentPage } from "@/pages/student/ui/StudentPage";
+import { TeacherPage } from "@/pages/teacher";
 import {
     createBrowserRouter,
     Navigate,
@@ -18,7 +21,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <ProtectedRoute />,
+                element: <ProtectedRoute allowRoles={["*"]} />,
                 children: [
                     {
                         path: "/",
@@ -28,27 +31,51 @@ const router = createBrowserRouter([
             },
             {
                 path: "/",
-                element: <NotAuthRoute />,
+                element: <ProtectedRoute allowRoles={["ROLE_ADMIN"]} />,
                 children: [
                     {
-                        path: "login",
-                        element: <LoginPage />,
+                        path: "admin",
+                        element: <AdminPage />,
                     },
+                ],
+            },
+            {
+                path: "/",
+                element: <ProtectedRoute allowRoles={["ROLE_TEACHER"]} />,
+                children: [
                     {
-                        path: "registration",
-                        element: <RegistrationPage />,
+                        path: "teacher",
+                        element: <TeacherPage />,
+                    },
+                ],
+            },
+            {
+                path: "/",
+                element: <ProtectedRoute allowRoles={["ROLE_STUDENT"]} />,
+                children: [
+                    {
+                        path: "student",
+                        element: <StudentPage />,
                     },
                 ],
             },
             {
                 path: "about",
-                element: <div>About</div>,
+                element: <AboutPage />,
             },
             {
                 path: "*",
                 element: <Navigate to='/' replace />,
             },
         ],
+    },
+    {
+        path: "login",
+        element: <LoginPage />,
+    },
+    {
+        path: "registration",
+        element: <RegistrationPage />,
     },
     {
         path: "logout",

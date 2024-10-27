@@ -1,0 +1,57 @@
+body {
+    background-image: url("../../../shared/assets/auth_background.png");
+    background-size: cover;
+}
+
+.registration__container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration__layout {
+    background-color: var(--form-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 73%;
+    max-width: 46%;
+    border-radius: 40px;
+    margin: 0 auto;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.registration__heading {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--heading-text-color);
+}
+
+.registraton__info {
+    font-size: 20px;
+    text-align: center;
+    max-width: 64%;
+    margin: 10px auto 20px;
+}
+
+.registration__button {
+    font-size: 33px;
+    font-family: "Overpass";
+    border-radius: 15px;
+    padding: 23px 92px;
+    box-sizing: border-box;
+    color: var(--button-text-color)
+}
+
+.registraton__to-login {
+    text-align: center;
+    font-size: 21px;
+    margin: 20px 0 0;
+}
+
+.registraton__ref {
+    text-decoration: underline;
+}

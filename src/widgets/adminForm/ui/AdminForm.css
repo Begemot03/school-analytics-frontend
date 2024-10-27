@@ -1,0 +1,8 @@
+.admin__button {
+    font-size: 23px;
+    font-family: "Overpass";
+    border-radius: 15px;
+    padding: 15px 80px;
+    box-sizing: border-box;
+    color: var(--button-text-color)
+}

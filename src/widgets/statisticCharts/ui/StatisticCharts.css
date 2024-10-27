@@ -1,0 +1,42 @@
+.statistic__container {
+    min-height: 820px;
+    background-color: var(--white);
+    box-shadow: 0px 4px 17px -2px #84C7AE;
+    box-sizing: border-box;
+    margin-bottom: 60px;
+}
+
+.statistic__pie-charts {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 50px 0 0;
+    box-sizing: border-box;
+    max-width: 80%;
+}
+
+.statistic__pie-chart {
+    max-width: 275px;
+    height: auto;
+}
+
+.statistic__bar-chart {
+    max-width: 100px;
+    height: 400px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+.statistic__bar-charts {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 60px 5%;
+}
+
+.statistic__pie-chart-p {
+    text-align: center;
+    margin: 10px 0 0;
+}

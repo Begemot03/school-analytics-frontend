@@ -18,6 +18,11 @@
     gap: 1rem;
 }
 
+.nav__item {
+    color: var(--nav-link-color);
+    cursor: pointer;
+}
+
 .nav__item:hover {
     color: var(--hover-link);
 }

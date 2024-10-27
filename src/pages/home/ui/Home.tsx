@@ -1,29 +1,43 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import { api } from "@/shared/api/api";
-
+import { Button } from "@/shared/ui/button";
+import { useAuthStore } from "@/app/stores/authStore";
+import { useShallow } from "zustand/shallow";
 
 export const HomePage: FC = () => {
-    const [data, setData] = useState<any>(null);
-    const [error, setError] = useState<string | null>(null);
+    const setRole = useAuthStore((state) => state.setRole);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [userRole, userEmail] = useAuthStore(
+        useShallow((state) => [state.userRole, state.userEmail])
+    );
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response: any = await api.get("/example").json();
-                setData(response);
-            } catch (error) {
-                setError('Failed to fetch data');
-            }
-        };
-        fetchData();
-    }, []);
+    const getAdmin = async () => {
+        try {
+            setLoading(true);
+            await api.get("example/get-admin");
+            setRole("ROLE_ADMIN");
+        } catch (error) {
+            console.error("Error fetch");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    if (error) {
-        return <div>{error}</div>;
-    }
-
-    return <>
-        <div>Home page</div>
-        {data && JSON.stringify(data)}
-    </>;
+    return (
+        <>
+            <div>Home page {userEmail && userEmail}</div>
+            {userRole != "ROLE_ADMIN" ? (
+                <>
+                    <Button loading={loading} onClick={getAdmin}>
+                        Получить админку
+                    </Button>
+                    <span>"Пока не админ"</span>
+                </>
+            ) : (
+                <>
+                    <span>Уже админ</span>
+                </>
+            )}
+        </>
+    );
 };

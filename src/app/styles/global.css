@@ -1,11 +1,17 @@
 :root {
 	--white: #fff;
 	--black: #000;
-	--footer-bg: #ccc;
-	--header-bg: #ccc;
+	--body-bg: #F3FFFA;
+	--footer-bg: #84C7AE;
+	--header-bg: #84C7AE;
 	--hover-link: #fff;
-	--button-color: #ccc;
+	--button-color: #84C7AE;
+	--button-text-color: #fff;
 	--input-border-color: #ccc;
+	--form-bg: #F6FBF9;
+	--heading-text-color: #212B27;
+	--placeholder-color: #000;
+	--nav-link-color: #fff;
 }
 
 * {
@@ -16,12 +22,16 @@
 
 body {
 	height: 100vh;
-	font-family: sans-serif;
+	font-family: "Overpass", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	background-color: var(--body-bg);
+	background-image: none;
 }
 
 #root {
 	height: 100%;
-	background-color: var(--white);
+	/*background-color: var(--white);*/
 }
 
 li {

@@ -1,0 +1,16 @@
+.teacher__heading {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.teacher__container {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.teacher__statistics-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 100px 0;
+    font-size: 28px;
+}

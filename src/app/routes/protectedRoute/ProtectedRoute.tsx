@@ -1,14 +1,24 @@
-import { useAuth } from "@/shared/lib/auth/useAuth";
+import { Role, useAuthStore } from "@/app/stores/authStore";
+import { FC } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { useShallow } from "zustand/shallow";
 
-export const ProtectedRoute = () => {
-    const { isAuth } = useAuth();
+type ProtectedRouteProps = {
+    allowRoles?: Array<Role | "*">;
+};
 
-    console.log(isAuth);
+export const ProtectedRoute: FC<ProtectedRouteProps> = ({ allowRoles }) => {
+    const [isAuth, userRole] = useAuthStore(
+        useShallow((state) => [state.isAuth, state.userRole])
+    );
 
-    if (!isAuth) {
-        return <Navigate to='/login' />;
+    if (isAuth && allowRoles?.at(0) === "*") {
+        return <Outlet />;
     }
 
-    return <Outlet />;
+    if (userRole && allowRoles?.includes(userRole)) {
+        return <Outlet />;
+    }
+
+    return <Navigate to='/' replace />;
 };
