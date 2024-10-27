@@ -20,4 +20,11 @@
 
 .nav__item:hover {
     color: var(--hover-link);
+    cursor: pointer;
+}
+
+.nav_item--selected {
+    background-color: #5c705c;
+    padding: 6px;
+    border-radius: 6px;
 }
