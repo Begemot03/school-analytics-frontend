@@ -59,8 +59,8 @@ export const GradeSection: FC = () => {
                 />
             </div>
             <h3>Оценки</h3>
-            <div style={{ display: "flex" }}>
-                <Pie data={gradeChartData} />
+            <div className="statistic__container">
+                <Pie height={100} data={gradeChartData} />
                 <table style={{ marginLeft: "20px" }}>
                     <thead>
                         <tr>

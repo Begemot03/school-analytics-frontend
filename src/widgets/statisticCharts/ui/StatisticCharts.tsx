@@ -1,8 +1,6 @@
 import { FC } from "react";
 import "./StatisticCharts.css";
-import { Chart, Pie } from "react-chartjs-2";
-import 'chart.js/auto';
-
+import { Line, Pie, Bar } from "react-chartjs-2";
 
 interface ChartData {
     labels: string[];
@@ -13,35 +11,37 @@ interface ChartData {
     }>;
 }
 
-
 export const StatisticCharts: FC = () => {
-
     const AttendanceData = {
-        datasets: [{
-            data: [82, 18],
-            label: "Посещаемость",
-            backgroundColor: ["#84C7AE", "#7400AD"],
-        }]
+        datasets: [
+            {
+                data: [82, 18],
+                label: "Посещаемость",
+                backgroundColor: ["#84C7AE", "#7400AD"],
+            },
+        ],
     };
 
     const SELData = {
-        datasets: [{
-            data: [82, 18],
-            label: "SEL",
-            backgroundColor: ["#84C7AE", "#7400AD"],
-        }]
+        datasets: [
+            {
+                data: [82, 18],
+                label: "SEL",
+                backgroundColor: ["#84C7AE", "#7400AD"],
+            },
+        ],
     };
 
     const options = {
         responsive: true,
         plugins: {
             legend: {
-                position: 'bottom' as const,
+                position: "bottom" as const,
                 display: false,
             },
             title: {
                 display: false,
-                text: 'Горизонтальный столбчатый график',
+                text: "Горизонтальный столбчатый график",
             },
         },
         scales: {
@@ -50,7 +50,7 @@ export const StatisticCharts: FC = () => {
                 grid: {
                     drawOnChartArea: false,
                 },
-                ticks: { autoSkip: true, maxTicksLimit: 0 }
+                ticks: { autoSkip: true, maxTicksLimit: 0 },
             },
             y: {
                 stacked: true,
@@ -63,61 +63,53 @@ export const StatisticCharts: FC = () => {
     };
 
     const data: ChartData = {
-        labels: ['Успеваемость'],
+        labels: ["Успеваемость"],
         datasets: [
             {
-                label: 'Хорошие оценки',
+                label: "Хорошие оценки",
                 data: [4, 5],
-                backgroundColor: '#84C7AE',
+                backgroundColor: "#84C7AE",
             },
             {
-                label: 'неудовлетворительные оценки',
+                label: "Неудовлетворительные оценки",
                 data: [1],
-                backgroundColor: '#7400AD',
+                backgroundColor: "#7400AD",
             },
         ],
     };
 
     const bData: ChartData = {
-        labels: ['Поведение'],
+        labels: ["Поведение"],
         datasets: [
             {
-                label: '',
+                label: "Хорошее поведение",
                 data: [3],
-                backgroundColor: '#84C7AE',
+                backgroundColor: "#84C7AE",
             },
             {
-                label: '',
+                label: "Неудовлетворительное поведение",
                 data: [2],
-                backgroundColor: '#7400AD',
+                backgroundColor: "#7400AD",
             },
         ],
     };
 
-
-    return <div className="statistic__container">
-        <div className="statistic__pie-charts">
-            <div className="statistic__pie-chart">
-                <Pie data={AttendanceData} />
-                <p className="statistic__pie-chart-p">Посещаемость</p>
+    return (
+        <div className='statistic__container'>
+            <div className='statistic__pie-charts'>
+                <div className='statistic__pie-chart'>
+                    <Pie data={AttendanceData} />
+                    <p className='statistic__pie-chart-p'>Посещаемость</p>
+                </div>
+                <div className='statistic__pie-chart'>
+                    <Pie data={SELData} />
+                    <p className='statistic__pie-chart-p'>SEL</p>
+                </div>
             </div>
-            <div className="statistic__pie-chart">
-                <Pie data={SELData} />
-                <p className="statistic__pie-chart-p">SEL</p>
+            <div className='statistic__bar-charts'>
+                <Bar data={data} options={options} />
+                <Bar data={bData} options={options} />
             </div>
         </div>
-        <div className="statistic__bar-charts">
-            <Chart
-                type="bar"
-                data={data}
-                options={options}
-            />
-            <Chart
-                type="bar"
-                data={bData}
-                options={options}
-            />
-        </div>
-
-    </div>
-}
+    );
+};

@@ -41,8 +41,8 @@ export const AttendaceSection: FC = () => {
                 <option value='Физика'>Физика</option>
             </select>
             <h3>Посещаемость</h3>
-            <div style={{ display: "flex" }}>
-                <Pie data={attendanceChartData} />
+            <div className="statistic__container">
+                <Pie height={100}  data={attendanceChartData} />
                 <table style={{ marginLeft: "20px" }}>
                     <thead>
                         <tr>

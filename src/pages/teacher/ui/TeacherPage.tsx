@@ -1,7 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { StudentList } from "@/widgets/studentList";
-import { StatisticCharts } from "@/widgets/statisticCharts/ui/StatisticCharts";
+
 import "./TeacherPage.css";
+import { StatisticCharts } from "@/widgets/statisticCharts";
 
 export const TeacherPage: FC = () => {
     const [students, _] = useState([
@@ -22,6 +23,7 @@ export const TeacherPage: FC = () => {
                 <h1 className='teacher__heading'>Страница учителя</h1>
                 <h2 className='teacher__heading'>Список учеников</h2>
                 <StudentList studentList={students} />
+                <StatisticCharts />
             </div>
         </>
     );

@@ -60,8 +60,8 @@ export const BehaviorSection: FC = () => {
                 onChange={(e) => setEndDate(e.target.value)}
             />
             <h3>Поведение</h3>
-            <div style={{ display: "flex" }}>
-                <Pie data={behaviorChartData} />
+            <div className="statistic__container">
+                <Pie height={100} data={behaviorChartData} />
                 <table style={{ marginLeft: "20px" }}>
                     <thead>
                         <tr>
