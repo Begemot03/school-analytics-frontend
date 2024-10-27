@@ -1,6 +1,6 @@
 import { FC } from "react";
 import "./StatisticCharts.css";
-import { Line, Pie, Bar } from "react-chartjs-2";
+import { Pie, Bar } from "react-chartjs-2";
 
 interface ChartData {
     labels: string[];

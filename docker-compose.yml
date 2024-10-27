@@ -5,7 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: begemot03/react-app:latest
     ports:
       - "80:80"
     restart: always

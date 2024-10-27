@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 
 export const BehaviorSection: FC = () => {
+    //@ts-ignore
     const [subject, setSubject] = useState("Математика");
     const [startDate, setStartDate] = useState("2023-10-26");
     const [endDate, setEndDate] = useState("2023-11-02");
