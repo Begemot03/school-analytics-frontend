@@ -7,9 +7,13 @@ import { useShallow } from "zustand/shallow";
 import "./header.css";
 
 export const Header: FC = () => {
-    const [isAuth, userRole] = useAuthStore(
-        useShallow((state) => [state.isAuth, state.userRole])
+    const [isAuth, userRole, setRole] = useAuthStore(
+        useShallow((state) => [state.isAuth, state.userRole, state.setRole])
     );
+
+    const toStudent = () => setRole("ROLE_STUDENT");
+    const toAdmin = () => setRole("ROLE_ADMIN");
+    const toTeacher = () => setRole("ROLE_TEACHER");
 
     const routes = [
         ...(isAuth ? ROUTES.PRIVATE : ROUTES.ROLE_GUEST),
@@ -22,26 +26,35 @@ export const Header: FC = () => {
                 <div className='header__container'>
                     <nav className='nav'>
                         {routes.map((route) => (
-                            <li className='nav__item' key={route.label}>
+                            <span className='nav__item' key={route.label}>
                                 <NavLink to={route.to}>{route.label}</NavLink>
-                            </li>
+                            </span>
                         ))}
                         {isAuth ? (
-                            <li className='nav__item'>
+                            <span className='nav__item'>
                                 <NavLink to='/logout'>Выход</NavLink>
-                            </li>
+                            </span>
                         ) : (
                             <>
-                                <li className='nav__item'>
+                                <span className='nav__item'>
                                     <NavLink to='/login'>Вход</NavLink>
-                                </li>
-                                <li className='nav__item'>
+                                </span>
+                                <span className='nav__item'>
                                     <NavLink to='/registration'>
                                         Регистриация
                                     </NavLink>
-                                </li>
+                                </span>
                             </>
                         )}
+                        <span className='nav__item nav_item--selected' onClick={toStudent}>
+                            Стать учеником
+                        </span>
+                        <span className='nav__item nav_item--selected' onClick={toTeacher}>
+                            Стать учителем
+                        </span>
+                        <span className='nav__item nav_item--selected' onClick={toAdmin}>
+                            Стать админом
+                        </span>
                     </nav>
                 </div>
             </Container>

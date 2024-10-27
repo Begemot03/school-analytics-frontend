@@ -15,7 +15,6 @@ export const Form: FC<FormProps> = ({ defaultValues, children, onSubmit }) => {
         formState: { errors },
     } = useForm(defaultValues);
 
-
     return (
         <form className='form' onSubmit={handleSubmit(onSubmit)}>
             {Children.map(children, (child: ReactElement) => {
