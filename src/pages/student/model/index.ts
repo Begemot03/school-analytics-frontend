@@ -35,6 +35,7 @@ type StudentStore = {
     ) => { date: string; score: number }[];
 }
 
+//@ts-ignore
 export const useStudentStore = create<StudentStore>()((set, get) => ({
     studentInfo: {
         studentId: "12345",
